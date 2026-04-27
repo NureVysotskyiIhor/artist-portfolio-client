@@ -5,9 +5,9 @@ import type {
     UserUpdateRequest
 } from "@/types/user.types";
 
-// export const getUserProfile = async () => {
-//     return await apiRequest<UserResponse>(`/user/profile`);
-// }
+export const getUserMe = async () => {
+    return await apiRequest<UserResponse>(`/users/me`);
+}
 
 export const getUserProfileById = async (id: string) => {
     return await apiRequest<UserResponse>(`/users/${id}`);

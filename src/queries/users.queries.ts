@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { queryClient } from '@/lib/query-client'
 
 import {
-    //getUserProfile,
+    getUserMe,
     getUserProfileById,
     updateUserProfile,
     deleteUserProfile
@@ -17,12 +17,12 @@ export const userKeys = {
     userById: (id: string) => ['users', id] as const,
 }
 
-// export const useUserProfileQuery = () => {
-//     return useQuery({
-//         queryKey: userKeys.all(),
-//         queryFn: () => getUserProfile(),
-//     });
-// }
+export const useUserProfileQuery = () => {
+    return useQuery({
+        queryKey: userKeys.all(),
+        queryFn: () => getUserMe(),
+    });
+}
 
 export const useUserProfileByIdQuery = (id: string) => {
     return useQuery({

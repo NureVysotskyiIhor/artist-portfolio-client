@@ -78,7 +78,7 @@ export const useUpdateCommissionRequestMutation = () => {
 
 export const useUpdateCommissionRequestArtistNoteMutation = () => {
     return useMutation({
-        mutationFn: (params: { id: string; artistId: string; data: CommissionRequestArtistNoteUpdateRequest }) => updateCommissionRequestArtistNote(params.id, params.artistId, params.data),
+        mutationFn: (params: { id: string; artistId: string; data: CommissionRequestArtistNoteUpdateRequest }) => updateCommissionRequestArtistNote(params.id, params.data),
         onSuccess: (_, variables) => {
             queryClient.invalidateQueries({ queryKey: commissionRequestKeys.all() })
             queryClient.invalidateQueries({ queryKey: commissionRequestKeys.detail(variables.id) })

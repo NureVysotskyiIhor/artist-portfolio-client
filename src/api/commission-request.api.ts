@@ -48,8 +48,8 @@ export const updateCommissionRequest = async (id: string, data: CommissionReques
     });
 }
 
-export const updateCommissionRequestArtistNote = async (id: string, artistId: string, data: CommissionRequestArtistNoteUpdateRequest) => {    
-    return await apiRequest<CommissionRequestResponse>(`/commission-requests/${id}/artist/${artistId}`, {
+export const updateCommissionRequestArtistNote = async (id: string, data: CommissionRequestArtistNoteUpdateRequest) => {    
+    return await apiRequest<CommissionRequestResponse>(`/commission-requests/${id}/artist`, {
         method: 'PUT',
         body: JSON.stringify(data),
     });

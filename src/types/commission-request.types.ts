@@ -27,6 +27,10 @@ export interface CommissionRequestResponse {
 
   createdAt: string;
   updatedAt: string;
+
+  city?: string;
+  longitude?: number;
+  latitude?: number;
 }
 
 export interface CommissionRequestCreateRequest {
@@ -63,6 +67,7 @@ export interface CommissionRequestUpdateRequest {
 
 export interface CommissionRequestArtistNoteUpdateRequest {
   artistNote: string;
+  status: CommissionRequestStatus;
 }
 
 export interface CommissionRequestNearbyParams {

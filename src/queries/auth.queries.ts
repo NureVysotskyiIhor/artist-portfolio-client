@@ -1,11 +1,12 @@
 import { useMutation } from '@tanstack/react-query'
-import { login, register, verifyEmail } from '@/api/auth.api'
+import { login, registerUser, verifyEmail } from '@/api/auth.api'
 import type { RegisterRequest } from '@/api/auth.api'
 import type { LoginRequest } from '@/types/auth.types'
+import { useAuthStore } from '@/store/auth.store'
 
 export const useRegisterMutation = () =>
   useMutation({
-    mutationFn: (data: RegisterRequest) => register(data),
+    mutationFn: (data: RegisterRequest) => registerUser(data),
   })
 
 export const useVerifyEmailMutation = () =>
@@ -13,11 +14,12 @@ export const useVerifyEmailMutation = () =>
     mutationFn: (token: string) => verifyEmail(token),
   })
 
-export const useLoginMutation = () =>
-  useMutation({
+export const useLoginMutation = () => {
+  const { setToken } = useAuthStore()
+  return useMutation({
     mutationFn: (data: LoginRequest) => login(data),
     onSuccess: (data) => {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('isArtist', data.isArtist.toString());
-    }
+      setToken(data.token, data.isArtist)
+    },
   })
+}

@@ -9,17 +9,17 @@ export interface RegisterRequest {
   bio?: string
 }
 
-export const register = async (data: RegisterRequest) =>
-  await apiRequest<UserResponse>('/api/auth/register', {
+export const registerUser = async (data: RegisterRequest) =>
+  await apiRequest<UserResponse>('/auth/register', {
     method: 'POST',
     body: JSON.stringify(data),
   })
 
 export const verifyEmail = async (token: string) =>
-  await apiRequest<string>(`/api/auth/verify?token=${token}`)
+  await apiRequest<string>(`/auth/verify?token=${token}`)
 
 export const login = async (data: LoginRequest) =>
-  await apiRequest<LoginResponse>('/api/auth/login', {
+  await apiRequest<LoginResponse>('/auth/login', {
     method: 'POST',
     body: JSON.stringify(data),
   })

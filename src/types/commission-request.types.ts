@@ -1,4 +1,4 @@
-import type { CommissionRequestStatus } from "./enums/commission-status.enums";
+import type { CommissionRequestStatus } from './enums/commission-status.enums';
 
 export interface CommissionRequestContacts {
   telegram: string;
@@ -10,7 +10,7 @@ export interface CommissionRequestResponse {
   id: string;
   userId: string;
   topicId: string;
-
+  topicName?: string;
   title: string;
   description: string;
 

@@ -6,6 +6,7 @@ import { useFavoritesWithPaintingQuery, useFavoriteStatsQuery } from '@/queries/
 import { PaintingCard } from '@/components/painting/painting-card.component';
 import { PaintingForm } from '@/components/painting/painting-form.component';
 import { Button } from '@/components/ui/button';
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PaintingStatus } from '@/types/enums/painting.enums';
@@ -62,25 +63,16 @@ const PaintingsPage = () => {
     <main className='max-w-5xl mx-auto px-4 py-10'>
       <div className='mb-8 flex items-center justify-between'>
         <div>
-          <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-            Gallery
-          </p>
+          <EyebrowLabel>Gallery</EyebrowLabel>
           <h1 className='text-2xl font-bold font-playfair text-foreground'>Paintings</h1>
         </div>
         <div className='flex gap-2'>
-          <Button
-            variant='outline'
-            onClick={() => setShowFilters(prev => !prev)}
-            className='gap-2 border-brand-green text-brand-green hover:bg-brand-green-muted'
-          >
+          <Button variant='brand-outline' onClick={() => setShowFilters(prev => !prev)}>
             <SlidersHorizontal className='w-4 h-4' />
             Filters
           </Button>
           {isArtist && (
-            <Button
-              onClick={() => setOverlay({ type: 'create' })}
-              className='gap-2 bg-brand-green text-white hover:bg-brand-green-hover'
-            >
+            <Button variant='brand' onClick={() => setOverlay({ type: 'create' })}>
               <Plus className='w-4 h-4' />
               Add painting
             </Button>
@@ -127,10 +119,7 @@ const PaintingsPage = () => {
                 className='w-28'
               />
             </div>
-            <Button
-              onClick={handleApplyFilters}
-              className='bg-brand-green text-white hover:bg-brand-green-hover'
-            >
+            <Button variant='brand' onClick={handleApplyFilters}>
               Apply
             </Button>
             {isFiltered && (

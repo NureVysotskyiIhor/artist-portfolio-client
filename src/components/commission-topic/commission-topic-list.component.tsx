@@ -40,20 +40,10 @@ export const CommissionTopicList = ({ topics, onEdit, onDelete }: CommissionTopi
           </div>
 
           <div className='flex items-center gap-2'>
-            <Button
-              variant='ghost'
-              size='icon'
-              onClick={() => onEdit(topic)}
-              className='text-muted-foreground hover:text-brand-green hover:bg-brand-green-muted'
-            >
+            <Button variant='ghost-brand' size='icon' onClick={() => onEdit(topic)}>
               <Pencil className='w-4 h-4' />
             </Button>
-            <Button
-              variant='ghost'
-              size='icon'
-              onClick={() => onDelete(topic)}
-              className='text-muted-foreground hover:text-destructive hover:bg-destructive/10'
-            >
+            <Button variant='ghost-destructive' size='icon' onClick={() => onDelete(topic)}>
               <Trash2 className='w-4 h-4' />
             </Button>
           </div>

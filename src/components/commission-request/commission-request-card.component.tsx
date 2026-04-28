@@ -137,21 +137,11 @@ export const CommissionRequestCard = ({
           })}
         </p>
         <div className='flex gap-2'>
-          <Button
-            variant='ghost'
-            size='icon'
-            onClick={() => onEdit(request)}
-            className='text-muted-foreground hover:text-brand-green hover:bg-brand-green-muted'
-          >
+          <Button variant='ghost-brand' size='icon' onClick={() => onEdit(request)}>
             <Pencil className='w-4 h-4' />
           </Button>
           {!isArtist && onDelete && (
-            <Button
-              variant='ghost'
-              size='icon'
-              onClick={() => onDelete(request)}
-              className='text-muted-foreground hover:text-destructive hover:bg-destructive/10'
-            >
+            <Button variant='ghost-destructive' size='icon' onClick={() => onDelete(request)}>
               <Trash2 className='w-4 h-4' />
             </Button>
           )}

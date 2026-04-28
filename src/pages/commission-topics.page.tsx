@@ -5,6 +5,7 @@ import { CommissionTopicList } from '@/components/commission-topic/commission-to
 import { CommissionTopicForm } from '@/components/commission-topic/commission-topic-form.component';
 import { CommissionTopicDeleteDialog } from '@/components/commission-topic/commission-topic-delete-dialog.component';
 import { Button } from '@/components/ui/button';
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
 import type { CommissionTopicResponse } from '@/types/commission-topic.types';
 
 type OverlayState =
@@ -30,15 +31,10 @@ const CommissionTopicsPage = () => {
     <main className='max-w-2xl mx-auto px-4 py-10'>
       <div className='mb-8 flex items-center justify-between'>
         <div>
-          <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-            Management
-          </p>
+          <EyebrowLabel>Management</EyebrowLabel>
           <h1 className='text-2xl font-bold font-playfair text-foreground'>Commission Topics</h1>
         </div>
-        <Button
-          onClick={() => setOverlay({ type: 'create' })}
-          className='gap-2 bg-brand-green text-white hover:bg-brand-green-hover'
-        >
+        <Button variant='brand' onClick={() => setOverlay({ type: 'create' })}>
           <Plus className='w-4 h-4' />
           New topic
         </Button>

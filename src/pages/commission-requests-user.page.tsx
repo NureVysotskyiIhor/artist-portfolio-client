@@ -6,6 +6,7 @@ import { CommissionRequestCard } from '@/components/commission-request/commissio
 import { CommissionRequestUserForm } from '@/components/commission-request/commission-request-user-form.component';
 import { CommissionRequestDeleteDialog } from '@/components/commission-request/commission-request-delete-dialog.component';
 import { Button } from '@/components/ui/button';
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
 import type { CommissionRequestResponse } from '@/types/commission-request.types';
 
 type OverlayState =
@@ -33,15 +34,10 @@ const CommissionRequestsUserPage = () => {
     <main className='max-w-3xl mx-auto px-4 py-10'>
       <div className='mb-8 flex items-center justify-between'>
         <div>
-          <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-            My Orders
-          </p>
+          <EyebrowLabel>My Orders</EyebrowLabel>
           <h1 className='text-2xl font-bold font-playfair text-foreground'>Commission Requests</h1>
         </div>
-        <Button
-          onClick={() => setOverlay({ type: 'create' })}
-          className='gap-2 bg-brand-green text-white hover:bg-brand-green-hover'
-        >
+        <Button variant='brand' onClick={() => setOverlay({ type: 'create' })}>
           <Plus className='w-4 h-4' />
           New request
         </Button>

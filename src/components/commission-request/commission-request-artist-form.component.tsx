@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-import { cn } from '@/lib/utils';
+import { Textarea } from '@/components/ui/textarea';
 import {
   commissionRequestArtistUpdateSchema,
   type CommissionRequestArtistUpdateFormInput,
@@ -99,15 +99,11 @@ export const CommissionRequestArtistForm = ({
         <Label className='text-xs font-bold text-foreground/50 uppercase tracking-wider'>
           Artist Note *
         </Label>
-        <textarea
+        <Textarea
           {...register('artistNote')}
           rows={4}
           placeholder='Leave a note for the client...'
-          className={cn(
-            'w-full rounded-md border border-input bg-background px-3 py-2 text-sm',
-            'focus:outline-none focus:ring-2 focus:ring-ring resize-none',
-            errors.artistNote && 'border-destructive'
-          )}
+          hasError={!!errors.artistNote}
         />
         {errors.artistNote && (
           <p className='text-xs text-destructive'>{errors.artistNote.message}</p>
@@ -115,11 +111,7 @@ export const CommissionRequestArtistForm = ({
       </div>
 
       <div className='flex gap-3 pt-2'>
-        <Button
-          type='submit'
-          disabled={isPending}
-          className='bg-brand-green text-white hover:bg-brand-green-hover'
-        >
+        <Button type='submit' disabled={isPending} variant='brand'>
           {isPending ? 'Saving...' : 'Save changes'}
         </Button>
         <Button type='button' variant='outline' onClick={onClose}>

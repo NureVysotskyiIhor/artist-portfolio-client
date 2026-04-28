@@ -2,20 +2,9 @@ import { Link } from '@tanstack/react-router';
 import { Heart } from 'lucide-react';
 import { useFavoritesWithPaintingQuery } from '@/queries/favorites.queries';
 import { useRemoveFavoriteMutation } from '@/queries/favorites.queries';
-import { PaintingStatus } from '@/types/enums/painting.enums';
 import { toast } from 'sonner';
-
-const statusLabels: Record<PaintingStatus, string> = {
-  [PaintingStatus.FOR_SALE]: 'For Sale',
-  [PaintingStatus.SOLD]: 'Sold',
-  [PaintingStatus.NOT_FOR_SALE]: 'Not for Sale',
-};
-
-const statusColors: Record<PaintingStatus, string> = {
-  [PaintingStatus.FOR_SALE]: 'bg-brand-green-muted text-brand-green',
-  [PaintingStatus.SOLD]: 'bg-gray-100 text-gray-500',
-  [PaintingStatus.NOT_FOR_SALE]: 'bg-yellow-100 text-yellow-700',
-};
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
+import { paintingStatusColors, paintingStatusLabels } from '@/utils/painting-status.utils';
 
 const FavoritesPage = () => {
   const { data: favorites = [], isLoading } = useFavoritesWithPaintingQuery();
@@ -36,9 +25,7 @@ const FavoritesPage = () => {
   return (
     <main className='max-w-5xl mx-auto px-4 py-10'>
       <div className='mb-8'>
-        <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-          Collection
-        </p>
+        <EyebrowLabel>Collection</EyebrowLabel>
         <h1 className='text-2xl font-bold font-playfair text-foreground'>My Favorites</h1>
       </div>
 
@@ -79,9 +66,9 @@ const FavoritesPage = () => {
                       {painting.title}
                     </p>
                     <span
-                      className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${statusColors[painting.status]}`}
+                      className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${paintingStatusColors[painting.status]}`}
                     >
-                      {statusLabels[painting.status]}
+                      {paintingStatusLabels[painting.status]}
                     </span>
                   </div>
                   <p className='text-sm font-bold text-brand-green'>${painting.price}</p>

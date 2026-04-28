@@ -2,19 +2,7 @@ import { Link } from '@tanstack/react-router';
 import type { PaintingResponse } from '@/types/painting.types';
 import type { FavoriteWithPaintingResponse } from '@/types/favorites.types';
 import { FavoriteButton } from '@/components/painting/favorite-button.component';
-import { PaintingStatus } from '@/types/enums/painting.enums';
-
-const statusLabels: Record<PaintingStatus, string> = {
-  [PaintingStatus.FOR_SALE]: 'For Sale',
-  [PaintingStatus.SOLD]: 'Sold',
-  [PaintingStatus.NOT_FOR_SALE]: 'Not for Sale',
-};
-
-const statusColors: Record<PaintingStatus, string> = {
-  [PaintingStatus.FOR_SALE]: 'bg-brand-green-muted text-brand-green',
-  [PaintingStatus.SOLD]: 'bg-gray-100 text-gray-500',
-  [PaintingStatus.NOT_FOR_SALE]: 'bg-yellow-100 text-yellow-700',
-};
+import { paintingStatusColors, paintingStatusLabels } from '@/utils/painting-status.utils';
 
 interface PaintingCardProps {
   painting: PaintingResponse;
@@ -62,9 +50,9 @@ export const PaintingCard = ({
         <div className='flex items-start justify-between gap-2'>
           <p className='text-sm font-semibold text-foreground line-clamp-1'>{painting.title}</p>
           <span
-            className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${statusColors[painting.status]}`}
+            className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 ${paintingStatusColors[painting.status]}`}
           >
-            {statusLabels[painting.status]}
+            {paintingStatusLabels[painting.status]}
           </span>
         </div>
 

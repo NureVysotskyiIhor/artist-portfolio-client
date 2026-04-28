@@ -11,16 +11,17 @@ import { useUpdateUserProfileMutation } from '@/queries/users.queries';
 import { ApiError } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { X } from 'lucide-react';
 import type { UserResponse } from '@/types/user.types';
 
 interface ProfileEditProps {
   user: UserResponse;
-  onCancel: () => void;
+  onClose: () => void;
 }
 
-export const ProfileEdit = ({ user, onCancel }: ProfileEditProps) => {
+export const ProfileEdit = ({ user, onClose }: ProfileEditProps) => {
   const { mutate: updateUser, isPending } = useUpdateUserProfileMutation();
 
   const {
@@ -55,7 +56,7 @@ export const ProfileEdit = ({ user, onCancel }: ProfileEditProps) => {
       {
         onSuccess: () => {
           toast.success('Profile updated successfully');
-          onCancel();
+          onClose();
         },
         onError: error => {
           if (error instanceof ApiError) {
@@ -82,15 +83,11 @@ export const ProfileEdit = ({ user, onCancel }: ProfileEditProps) => {
 
       <div className='flex flex-col gap-2'>
         <Label className='text-xs font-bold text-foreground/50 uppercase tracking-wider'>Bio</Label>
-        <textarea
+        <Textarea
           {...register('bio')}
           rows={4}
           placeholder='Tell something about yourself...'
-          className={cn(
-            'w-full rounded-md border border-input bg-background px-3 py-2 text-sm',
-            'focus:outline-none focus:ring-2 focus:ring-ring resize-none',
-            errors.bio && 'border-destructive'
-          )}
+          hasError={!!errors.bio}
         />
       </div>
 
@@ -107,14 +104,10 @@ export const ProfileEdit = ({ user, onCancel }: ProfileEditProps) => {
       </div>
 
       <div className='flex gap-3'>
-        <Button
-          type='submit'
-          disabled={isPending}
-          className='bg-brand-green text-white hover:bg-brand-green-hover'
-        >
+        <Button type='submit' disabled={isPending} variant='brand'>
           {isPending ? 'Saving...' : 'Save changes'}
         </Button>
-        <Button type='button' variant='outline' onClick={onCancel} className='gap-2'>
+        <Button type='button' variant='outline' onClick={onClose} className='gap-2'>
           <X className='w-4 h-4' />
           Cancel
         </Button>

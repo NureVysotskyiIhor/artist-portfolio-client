@@ -9,6 +9,7 @@ import {
 import { useCreateHomepageProfileMutation } from '@/queries/homepage-profile.queries';
 import { ApiError } from '@/api/client';
 import { Button } from '@/components/ui/button';
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -51,9 +52,7 @@ export const HomepageCreateForm = () => {
   return (
     <main className='max-w-2xl mx-auto px-4 py-10'>
       <div className='mb-8'>
-        <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-          Artist Portfolio
-        </p>
+        <EyebrowLabel>Artist Portfolio</EyebrowLabel>
         <h1 className='text-2xl font-bold font-playfair text-foreground mb-1.5'>
           Set up your portfolio
         </h1>
@@ -106,11 +105,7 @@ export const HomepageCreateForm = () => {
             </div>
           </div>
 
-          <Button
-            type='submit'
-            disabled={isPending}
-            className='bg-brand-green text-white hover:bg-brand-green-hover'
-          >
+          <Button type='submit' disabled={isPending} variant='brand'>
             {isPending ? 'Creating...' : 'Create portfolio'}
           </Button>
         </form>

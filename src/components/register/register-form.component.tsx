@@ -161,11 +161,7 @@ export const RegisterForm = () => {
         )}
       </div>
 
-      <Button
-        type='submit'
-        disabled={isPending}
-        className='mt-1 bg-brand-green text-white hover:bg-brand-green-hover'
-      >
+      <Button type='submit' disabled={isPending} variant='brand' className='mt-1'>
         {isPending ? 'Creating account...' : 'Create account'}
       </Button>
     </form>

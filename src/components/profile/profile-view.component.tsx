@@ -24,11 +24,7 @@ export const ProfileView = ({ user, onEdit }: ProfileViewProps) => {
             </span>
           </div>
         )}
-        <Button
-          onClick={onEdit}
-          variant='outline'
-          className='gap-2 border-brand-green text-brand-green hover:bg-brand-green-muted'
-        >
+        <Button onClick={onEdit} variant='brand-outline'>
           <Pencil className='w-4 h-4' />
           Edit
         </Button>

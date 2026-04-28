@@ -1,6 +1,6 @@
 import { toast } from 'sonner';
 import { useDeleteCommissionRequestMutation } from '@/queries/commission-request.queries';
-import { Button } from '@/components/ui/button';
+import { DeleteDialog } from '@/components/ui/delete-dialog';
 import type { CommissionRequestResponse } from '@/types/commission-request.types';
 
 interface CommissionRequestDeleteDialogProps {
@@ -28,24 +28,12 @@ export const CommissionRequestDeleteDialog = ({
   };
 
   return (
-    <div className='flex flex-col gap-4'>
-      <p className='text-sm text-foreground/70'>
-        Are you sure you want to delete{' '}
-        <span className='font-semibold text-foreground'>{request.title}</span>? This action cannot
-        be undone.
-      </p>
-      <div className='flex gap-3'>
-        <Button
-          onClick={handleDelete}
-          disabled={isPending}
-          className='bg-destructive text-white hover:bg-destructive/90'
-        >
-          {isPending ? 'Deleting...' : 'Delete'}
-        </Button>
-        <Button type='button' variant='outline' onClick={onClose}>
-          Cancel
-        </Button>
-      </div>
-    </div>
+    <DeleteDialog
+      title='Delete'
+      description={`Are you sure you want to delete "${request.title}"? This action cannot be undone.`}
+      onConfirm={handleDelete}
+      onClose={onClose}
+      isPending={isPending}
+    />
   );
 };

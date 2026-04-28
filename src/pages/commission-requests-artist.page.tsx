@@ -7,6 +7,7 @@ import {
 import { CommissionRequestCard } from '@/components/commission-request/commission-request-card.component';
 import { CommissionRequestArtistForm } from '@/components/commission-request/commission-request-artist-form.component';
 import { Button } from '@/components/ui/button';
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import type { CommissionRequestResponse } from '@/types/commission-request.types';
@@ -83,9 +84,7 @@ const CommissionRequestsArtistPage = () => {
   return (
     <main className='max-w-3xl mx-auto px-4 py-10'>
       <div className='mb-8'>
-        <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-          Management
-        </p>
+        <EyebrowLabel>Management</EyebrowLabel>
         <h1 className='text-2xl font-bold font-playfair text-foreground'>Commission Requests</h1>
       </div>
 
@@ -104,12 +103,7 @@ const CommissionRequestsArtistPage = () => {
               min='1'
             />
           </div>
-          <Button
-            onClick={handleLocate}
-            disabled={isLocating}
-            variant='outline'
-            className='gap-2 border-brand-green text-brand-green hover:bg-brand-green-muted'
-          >
+          <Button onClick={handleLocate} disabled={isLocating} variant='brand-outline'>
             {isLocating ? (
               <Loader2 className='w-4 h-4 animate-spin' />
             ) : (

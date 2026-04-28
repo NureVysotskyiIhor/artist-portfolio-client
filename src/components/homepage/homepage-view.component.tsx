@@ -1,4 +1,5 @@
 import type { HomepageProfileResponse } from '@/types/homepage-profile.types';
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
 
 interface HomepageViewProps {
   profile: HomepageProfileResponse | undefined;
@@ -19,9 +20,7 @@ export const HomepageView = ({ profile }: HomepageViewProps) => {
   return (
     <main className='max-w-3xl mx-auto px-4 py-10'>
       <section className='mb-10'>
-        <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-          Artist Portfolio
-        </p>
+        <EyebrowLabel>Artist Portfolio</EyebrowLabel>
         <h1 className='font-playfair text-4xl font-bold text-foreground mb-2'>{profile.name}</h1>
         {profile.title && <p className='text-lg text-muted-foreground mb-4'>{profile.title}</p>}
         {profile.bio && <p className='text-sm text-foreground/70 leading-relaxed'>{profile.bio}</p>}

@@ -6,19 +6,8 @@ import { usePaintingsByIdQuery } from '@/queries/paintings.queries';
 import { PaintingForm } from '@/components/painting/painting-form.component';
 import { PaintingDeleteDialog } from '@/components/painting/painting-delete-dialog.component';
 import { Button } from '@/components/ui/button';
-import { PaintingStatus } from '@/types/enums/painting.enums';
-
-const statusLabels: Record<PaintingStatus, string> = {
-  [PaintingStatus.FOR_SALE]: 'For Sale',
-  [PaintingStatus.SOLD]: 'Sold',
-  [PaintingStatus.NOT_FOR_SALE]: 'Not for Sale',
-};
-
-const statusColors: Record<PaintingStatus, string> = {
-  [PaintingStatus.FOR_SALE]: 'bg-brand-green-muted text-brand-green',
-  [PaintingStatus.SOLD]: 'bg-gray-100 text-gray-500',
-  [PaintingStatus.NOT_FOR_SALE]: 'bg-yellow-100 text-yellow-700',
-};
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
+import { paintingStatusColors, paintingStatusLabels } from '@/utils/painting-status.utils';
 
 type OverlayState = { type: 'none' } | { type: 'edit' } | { type: 'delete' };
 
@@ -59,16 +48,14 @@ const PaintingDetailPage = () => {
 
         <div className='flex flex-col gap-5'>
           <div>
-            <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-              Painting
-            </p>
+            <EyebrowLabel>Painting</EyebrowLabel>
             <h1 className='text-2xl font-bold font-playfair text-foreground mb-2'>
               {painting.title}
             </h1>
             <span
-              className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${statusColors[painting.status]}`}
+              className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${paintingStatusColors[painting.status]}`}
             >
-              {statusLabels[painting.status]}
+              {paintingStatusLabels[painting.status]}
             </span>
           </div>
 
@@ -94,8 +81,8 @@ const PaintingDetailPage = () => {
             <div className='flex gap-3 pt-2'>
               <Button
                 onClick={() => setOverlay({ type: 'edit' })}
-                variant='outline'
-                className='gap-2 border-brand-green text-brand-green hover:bg-brand-green-muted flex-1'
+                variant='brand-outline'
+                className='flex-1'
               >
                 <Pencil className='w-4 h-4' />
                 Edit

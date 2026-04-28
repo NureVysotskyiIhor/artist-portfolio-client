@@ -106,11 +106,7 @@ export const LoginForm = () => {
         {errors.password && <p className='text-xs text-destructive'>{errors.password.message}</p>}
       </div>
 
-      <Button
-        type='submit'
-        disabled={isPending}
-        className='mt-1 bg-brand-green text-white hover:bg-brand-green-hover'
-      >
+      <Button type='submit' disabled={isPending} variant='brand' className='mt-1'>
         {isPending ? 'Logging in...' : 'Log in'}
       </Button>
     </form>

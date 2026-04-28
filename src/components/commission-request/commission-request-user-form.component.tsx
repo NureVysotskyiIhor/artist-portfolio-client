@@ -21,6 +21,7 @@ import { searchCityOrCountry, type NominatimFeature } from '@/api/nominatim.api'
 import { ApiError } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { CommissionRequestStatus } from '@/types/enums/commission-status.enums';
 import type { CommissionRequestResponse } from '@/types/commission-request.types';
@@ -165,15 +166,11 @@ export const CommissionRequestUserForm = ({ request, onClose }: CommissionReques
           <Label className='text-xs font-bold text-foreground/50 uppercase tracking-wider'>
             Description *
           </Label>
-          <textarea
+          <Textarea
             {...updateForm.register('description')}
             rows={4}
             placeholder='Describe what you want...'
-            className={cn(
-              'w-full rounded-md border border-input bg-background px-3 py-2 text-sm',
-              'focus:outline-none focus:ring-2 focus:ring-ring resize-none',
-              updateForm.formState.errors.description && 'border-destructive'
-            )}
+            hasError={!!updateForm.formState.errors.description}
           />
           {updateForm.formState.errors.description && (
             <p className='text-xs text-destructive'>
@@ -228,11 +225,7 @@ export const CommissionRequestUserForm = ({ request, onClose }: CommissionReques
         </div>
 
         <div className='flex gap-3 pt-2'>
-          <Button
-            type='submit'
-            disabled={isPending}
-            className='bg-brand-green text-white hover:bg-brand-green-hover'
-          >
+          <Button type='submit' disabled={isPending} variant='brand'>
             {isPending ? 'Saving...' : 'Save changes'}
           </Button>
           <Button type='button' variant='outline' onClick={onClose}>
@@ -340,15 +333,11 @@ export const CommissionRequestUserForm = ({ request, onClose }: CommissionReques
         <Label className='text-xs font-bold text-foreground/50 uppercase tracking-wider'>
           Description *
         </Label>
-        <textarea
+        <Textarea
           {...createForm.register('description')}
           rows={4}
           placeholder='Describe what you want...'
-          className={cn(
-            'w-full rounded-md border border-input bg-background px-3 py-2 text-sm',
-            'focus:outline-none focus:ring-2 focus:ring-ring resize-none',
-            createForm.formState.errors.description && 'border-destructive'
-          )}
+          hasError={!!createForm.formState.errors.description}
         />
         {createForm.formState.errors.description && (
           <p className='text-xs text-destructive'>

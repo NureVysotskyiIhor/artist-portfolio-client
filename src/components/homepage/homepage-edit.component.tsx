@@ -10,7 +10,9 @@ import {
 import { useUpdateHomepageProfileMutation } from '@/queries/homepage-profile.queries';
 import { ApiError } from '@/api/client';
 import { Button } from '@/components/ui/button';
+import { EyebrowLabel } from '@/components/ui/eyebrow-label';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import type { HomepageProfileResponse } from '@/types/homepage-profile.types';
 
@@ -84,9 +86,7 @@ export const HomepageEditForm = ({ profile }: HomepageEditProps) => {
   return (
     <main className='max-w-2xl mx-auto px-4 py-10'>
       <div className='mb-8'>
-        <p className='text-[11px] font-bold tracking-[.18em] uppercase text-brand-green mb-2'>
-          Artist Portfolio
-        </p>
+        <EyebrowLabel>Artist Portfolio</EyebrowLabel>
         <h1 className='text-2xl font-bold font-playfair text-foreground mb-1.5'>
           Edit your portfolio
         </h1>
@@ -126,15 +126,11 @@ export const HomepageEditForm = ({ profile }: HomepageEditProps) => {
             <Label className='text-xs font-bold text-foreground/50 uppercase tracking-wider'>
               Bio
             </Label>
-            <textarea
+            <Textarea
               {...register('bio')}
               rows={4}
               placeholder='Tell visitors about yourself...'
-              className={cn(
-                'w-full rounded-md border border-input bg-background px-3 py-2 text-sm',
-                'focus:outline-none focus:ring-2 focus:ring-ring resize-none',
-                errors.bio && 'border-destructive'
-              )}
+              hasError={!!errors.bio}
             />
             {errors.bio && <p className='text-xs text-destructive'>{errors.bio.message}</p>}
           </div>
@@ -169,11 +165,7 @@ export const HomepageEditForm = ({ profile }: HomepageEditProps) => {
             </div>
           </div>
 
-          <Button
-            type='submit'
-            disabled={isPending}
-            className='bg-brand-green text-white hover:bg-brand-green-hover'
-          >
+          <Button type='submit' disabled={isPending} variant='brand'>
             {isPending ? 'Saving...' : 'Save changes'}
           </Button>
         </form>

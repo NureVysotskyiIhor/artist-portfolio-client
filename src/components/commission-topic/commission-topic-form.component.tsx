@@ -13,6 +13,7 @@ import {
 } from '@/queries/commission-topic.queries';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import type { CommissionTopicResponse } from '@/types/commission-topic.types';
 
@@ -101,15 +102,11 @@ export const CommissionTopicForm = ({ topic, onClose }: CommissionTopicFormProps
         <Label className='text-xs font-bold text-foreground/50 uppercase tracking-wider'>
           Description *
         </Label>
-        <textarea
+        <Textarea
           {...register('description')}
           rows={3}
           placeholder='Describe this commission type...'
-          className={cn(
-            'w-full rounded-md border border-input bg-background px-3 py-2 text-sm',
-            'focus:outline-none focus:ring-2 focus:ring-ring resize-none',
-            errors.description && 'border-destructive'
-          )}
+          hasError={!!errors.description}
         />
         {errors.description && (
           <p className='text-xs text-destructive'>{errors.description.message}</p>
@@ -136,11 +133,7 @@ export const CommissionTopicForm = ({ topic, onClose }: CommissionTopicFormProps
       </div>
 
       <div className='flex gap-3 pt-2'>
-        <Button
-          type='submit'
-          disabled={isPending}
-          className='bg-brand-green text-white hover:bg-brand-green-hover'
-        >
+        <Button type='submit' disabled={isPending} variant='brand'>
           {isPending ? 'Saving...' : isEditing ? 'Save changes' : 'Create topic'}
         </Button>
         <Button type='button' variant='outline' onClick={onClose}>

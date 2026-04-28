@@ -62,23 +62,13 @@ const Header = () => {
               >
                 <UserCircle className='w-5 h-5' />
               </Link>
-              <Button
-                variant='outline'
-                size='sm'
-                onClick={handleLogout}
-                className='border-brand-green text-brand-green hover:bg-brand-green-muted hover:text-brand-green'
-              >
+              <Button variant='brand-outline' size='sm' onClick={handleLogout}>
                 Log out
               </Button>
             </>
           ) : (
             <>
-              <Button
-                variant='outline'
-                size='sm'
-                className='border-brand-green text-brand-green hover:bg-brand-green-muted hover:text-brand-green'
-                asChild
-              >
+              <Button variant='brand-outline' size='sm' asChild>
                 <Link to='/login'>Log in</Link>
               </Button>
               <Button

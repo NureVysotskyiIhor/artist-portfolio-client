@@ -1,4 +1,4 @@
-import type { PaintingResponse } from "./painting.types";
+import type { PaintingResponse } from './painting.types';
 
 export interface FavoriteResponse {
   id: string;
@@ -7,13 +7,12 @@ export interface FavoriteResponse {
   createdAt: string; // ISO
 }
 
-export interface FavoriteStatsResponse {
-  totalFavorites: number;
-  userId: string;
+export interface FavoritePaintingStatsResponse {
+  paintingId: string;
+  count: number;
 }
 
 export interface FavoriteRequest {
-  userId: string;
   paintingId: string;
 }
 

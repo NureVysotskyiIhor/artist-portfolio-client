@@ -74,3 +74,4 @@ export default defineConfig([
 # bonte_client
 # non-nom-save_client
 # non-nom-save_client
+# artist-portfolio_client

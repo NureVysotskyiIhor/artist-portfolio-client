@@ -9,9 +9,58 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TopicsRouteImport } from './routes/topics'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PaintingsRouteImport } from './routes/paintings'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as FavoritesRouteImport } from './routes/favorites'
+import { Route as CommissionRequestArtistRouteImport } from './routes/commission-request-artist'
+import { Route as CommissionRequestRouteImport } from './routes/commission-request'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PaintingDetailPaintingIdRouteImport } from './routes/painting-detail.$paintingId'
 
+const TopicsRoute = TopicsRouteImport.update({
+  id: '/topics',
+  path: '/topics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaintingsRoute = PaintingsRouteImport.update({
+  id: '/paintings',
+  path: '/paintings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommissionRequestArtistRoute = CommissionRequestArtistRouteImport.update({
+  id: '/commission-request-artist',
+  path: '/commission-request-artist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommissionRequestRoute = CommissionRequestRouteImport.update({
+  id: '/commission-request',
+  path: '/commission-request',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -22,35 +71,167 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PaintingDetailPaintingIdRoute =
+  PaintingDetailPaintingIdRouteImport.update({
+    id: '/painting-detail/$paintingId',
+    path: '/painting-detail/$paintingId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commission-request': typeof CommissionRequestRoute
+  '/commission-request-artist': typeof CommissionRequestArtistRoute
+  '/favorites': typeof FavoritesRoute
+  '/login': typeof LoginRoute
+  '/paintings': typeof PaintingsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/topics': typeof TopicsRoute
+  '/painting-detail/$paintingId': typeof PaintingDetailPaintingIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commission-request': typeof CommissionRequestRoute
+  '/commission-request-artist': typeof CommissionRequestArtistRoute
+  '/favorites': typeof FavoritesRoute
+  '/login': typeof LoginRoute
+  '/paintings': typeof PaintingsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/topics': typeof TopicsRoute
+  '/painting-detail/$paintingId': typeof PaintingDetailPaintingIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commission-request': typeof CommissionRequestRoute
+  '/commission-request-artist': typeof CommissionRequestArtistRoute
+  '/favorites': typeof FavoritesRoute
+  '/login': typeof LoginRoute
+  '/paintings': typeof PaintingsRoute
+  '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
+  '/topics': typeof TopicsRoute
+  '/painting-detail/$paintingId': typeof PaintingDetailPaintingIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/commission-request'
+    | '/commission-request-artist'
+    | '/favorites'
+    | '/login'
+    | '/paintings'
+    | '/profile'
+    | '/register'
+    | '/topics'
+    | '/painting-detail/$paintingId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/commission-request'
+    | '/commission-request-artist'
+    | '/favorites'
+    | '/login'
+    | '/paintings'
+    | '/profile'
+    | '/register'
+    | '/topics'
+    | '/painting-detail/$paintingId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/commission-request'
+    | '/commission-request-artist'
+    | '/favorites'
+    | '/login'
+    | '/paintings'
+    | '/profile'
+    | '/register'
+    | '/topics'
+    | '/painting-detail/$paintingId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CommissionRequestRoute: typeof CommissionRequestRoute
+  CommissionRequestArtistRoute: typeof CommissionRequestArtistRoute
+  FavoritesRoute: typeof FavoritesRoute
+  LoginRoute: typeof LoginRoute
+  PaintingsRoute: typeof PaintingsRoute
+  ProfileRoute: typeof ProfileRoute
+  RegisterRoute: typeof RegisterRoute
+  TopicsRoute: typeof TopicsRoute
+  PaintingDetailPaintingIdRoute: typeof PaintingDetailPaintingIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/topics': {
+      id: '/topics'
+      path: '/topics'
+      fullPath: '/topics'
+      preLoaderRoute: typeof TopicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paintings': {
+      id: '/paintings'
+      path: '/paintings'
+      fullPath: '/paintings'
+      preLoaderRoute: typeof PaintingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commission-request-artist': {
+      id: '/commission-request-artist'
+      path: '/commission-request-artist'
+      fullPath: '/commission-request-artist'
+      preLoaderRoute: typeof CommissionRequestArtistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commission-request': {
+      id: '/commission-request'
+      path: '/commission-request'
+      fullPath: '/commission-request'
+      preLoaderRoute: typeof CommissionRequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -65,12 +246,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/painting-detail/$paintingId': {
+      id: '/painting-detail/$paintingId'
+      path: '/painting-detail/$paintingId'
+      fullPath: '/painting-detail/$paintingId'
+      preLoaderRoute: typeof PaintingDetailPaintingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CommissionRequestRoute: CommissionRequestRoute,
+  CommissionRequestArtistRoute: CommissionRequestArtistRoute,
+  FavoritesRoute: FavoritesRoute,
+  LoginRoute: LoginRoute,
+  PaintingsRoute: PaintingsRoute,
+  ProfileRoute: ProfileRoute,
+  RegisterRoute: RegisterRoute,
+  TopicsRoute: TopicsRoute,
+  PaintingDetailPaintingIdRoute: PaintingDetailPaintingIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
